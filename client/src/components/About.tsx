@@ -126,7 +126,6 @@ const About: React.FC = () => {
               <div className="lg:w-1/2">
                 <div className="relative mb-6 pb-6 border-b border-accent/10">
                   <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 relative">
-                    <span className="absolute -left-4 top-0 text-accent opacity-40 text-7xl font-light">A</span>
                     Our Story
                   </h2>
                   

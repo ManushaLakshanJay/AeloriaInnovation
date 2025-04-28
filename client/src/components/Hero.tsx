@@ -112,7 +112,7 @@ const Hero: React.FC = () => {
               <div className="w-36 h-36 md:w-44 md:h-44 relative bg-background/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-accent/30 shadow-lg shadow-accent/10">
                 <div className="absolute inset-2 border-2 border-accent/20 rounded-full"></div>
                 <div className="absolute inset-0 border border-accent/40 rounded-full animate-ping opacity-30"></div>
-                <span className="font-montserrat text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-white to-accent/80">A</span>
+                <div className="w-20 h-20 rounded-full bg-accent/20 animate-pulse-slow"></div>
               </div>
             </div>
             

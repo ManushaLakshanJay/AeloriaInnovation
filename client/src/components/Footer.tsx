@@ -30,7 +30,6 @@ const Footer: React.FC = () => {
                 <div className="relative w-10 h-10 flex items-center justify-center">
                   <span className="absolute inset-0 rounded-full bg-accent/20 animate-pulse-slow"></span>
                   <span className="absolute w-6 h-6 rounded-full bg-accent/30 blur-sm"></span>
-                  <span className="relative text-xl font-bold font-montserrat">A</span>
                 </div>
                 <span className="text-2xl font-bold font-montserrat tracking-wider">AELORIA</span>
               </div>

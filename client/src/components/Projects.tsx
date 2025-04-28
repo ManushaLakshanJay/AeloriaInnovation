@@ -63,34 +63,70 @@ const Projects: React.FC = () => {
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-4">Featured Projects</h2>
-          <p className="text-textsecondary max-w-2xl mx-auto">Discover our portfolio of innovative solutions that have transformed businesses across industries.</p>
+          <div className="inline-block mb-3 px-4 py-1 border border-accent/30 rounded-full bg-accent/5">
+            <span className="text-sm font-medium font-montserrat text-accent tracking-wide">Our Portfolio</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold font-montserrat mb-4 tracking-tight">Featured <span className="text-accent">Projects</span></h2>
+          <p className="text-textsecondary max-w-2xl mx-auto opacity-90">Discover our collection of innovative solutions that have transformed businesses across various industries.</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <div key={project.id} className="project-card rounded-xl overflow-hidden group">
-              <div className="relative h-64 overflow-hidden">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
-                  <div className="p-6">
-                    <h3 className="text-lg font-montserrat font-semibold">{project.title}</h3>
-                    <p className="text-textsecondary text-sm">{project.subtitle}</p>
+            <div key={project.id} className="project-card group relative flex flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-card/90 to-card border border-accent/10 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500">
+              {/* Background glow effect on hover */}
+              <div className="absolute -right-20 -top-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              
+              {/* Image container */}
+              <div className="relative h-52 overflow-hidden">
+                <div className="absolute inset-0 bg-accent/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                />
+                
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card opacity-100"></div>
+                
+                {/* Project type badge */}
+                <div className="absolute top-4 left-4">
+                  <div className="px-3 py-1 rounded-full bg-accent/20 backdrop-blur-sm border border-accent/30 text-white text-xs font-medium font-montserrat tracking-wide">
+                    {project.tags[0]}
                   </div>
                 </div>
               </div>
-              <div className="p-6 bg-background border-t border-accent/20">
+              
+              {/* Content */}
+              <div className="p-6 flex-grow z-10 relative">
+                <h3 className="text-xl font-montserrat font-semibold mb-2 group-hover:text-accent transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-textsecondary text-sm mb-4">{project.subtitle}</p>
+                
+                {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, index) => (
-                    <span key={index} className="text-xs bg-accent/10 text-accent px-2 py-1 rounded">{tag}</span>
+                  {project.tags.slice(1).map((tag, index) => (
+                    <span key={index} className="text-xs bg-background border border-accent/10 text-textsecondary px-2 py-1 rounded-md">
+                      {tag}
+                    </span>
                   ))}
                 </div>
-                <p className="text-textsecondary text-sm mb-4">
+                
+                <p className="text-textsecondary text-sm mb-6 line-clamp-3">
                   {project.description}
                 </p>
-                <a href="#" className="text-accent hover:text-accentglow font-montserrat uppercase text-xs tracking-wider transition-colors flex items-center">
-                  View Case Study
-                  <i className="fas fa-arrow-right ml-2 text-xs"></i>
+                
+                {/* Action button */}
+                <a 
+                  href="#" 
+                  className="inline-flex items-center text-accent hover:text-accentglow font-montserrat text-sm tracking-wide transition-colors group-hover:font-medium"
+                >
+                  <span className="relative">
+                    View Case Study
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                  </span>
+                  <i className="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
                 </a>
               </div>
             </div>

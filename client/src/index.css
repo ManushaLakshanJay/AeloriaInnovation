@@ -3,54 +3,54 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 0%; /* Pure black */
+  --background: 0 0% 3%; /* Near black with slight gray for more modern look */
   --foreground: 0 0% 100%; /* White text */
-  --muted: 0 0% 10%; /* Dark gray */
-  --muted-foreground: 0 0% 70%; /* Light gray text */
-  --popover: 0 0% 5%; /* Very dark gray, almost black */
+  --muted: 0 0% 12%; /* Dark gray */
+  --muted-foreground: 0 0% 75%; /* Light gray text - brighter for readability */
+  --popover: 0 0% 7%; /* Very dark gray */
   --popover-foreground: 0 0% 100%; /* White text */
-  --card: 0 0% 7%; /* Very dark gray */
+  --card: 0 0% 8%; /* Dark gray card with subtle difference from background */
   --card-foreground: 0 0% 100%; /* White text */
-  --border: 0 0% 20%; /* Dark gray border */
+  --border: 0 0% 15%; /* Subtle border */
   --input: 0 0% 15%; /* Dark gray input */
-  --primary: 0 90% 40%; /* Primary red */
+  --primary: 0 80% 45%; /* Primary red - slightly softer than pure red */
   --primary-foreground: 0 0% 100%; /* White text */
   --secondary: 0 0% 12%; /* Dark gray secondary */
   --secondary-foreground: 0 0% 100%; /* White text */
-  --accent: 0 90% 40%; /* Accent red (same as primary) */
+  --accent: 0 80% 45%; /* Accent red (same as primary) */
   --accent-foreground: 0 0% 100%; /* White text */
   --destructive: 0 84.2% 60.2%; /* Bright red for destructive actions */
   --destructive-foreground: 0 0% 100%; /* White text */
-  --ring: 0 90% 40%; /* Red ring */
-  --radius: 0.5rem;
-  --textsecondary: 0 0% 70%; /* Light gray for secondary text */
-  --accentglow: 0 90% 50%; /* Brighter red for hover states */
+  --ring: 0 80% 45%; /* Red ring */
+  --radius: 0.75rem; /* More modern rounded corners */
+  --textsecondary: 0 0% 75%; /* Light gray for secondary text - improved contrast */
+  --accentglow: 0 80% 55%; /* Brighter red for hover states */
 }
 
 /* Duplicate values in .dark class for compatibility with dark mode toggle if used */
 .dark {
-  --background: 0 0% 0%; /* Pure black */
+  --background: 0 0% 3%; /* Near black with slight gray for more modern look */
   --foreground: 0 0% 100%; /* White text */
-  --muted: 0 0% 10%; /* Dark gray */
-  --muted-foreground: 0 0% 70%; /* Light gray text */
-  --popover: 0 0% 5%; /* Very dark gray, almost black */
+  --muted: 0 0% 12%; /* Dark gray */
+  --muted-foreground: 0 0% 75%; /* Light gray text - brighter for readability */
+  --popover: 0 0% 7%; /* Very dark gray */
   --popover-foreground: 0 0% 100%; /* White text */
-  --card: 0 0% 7%; /* Very dark gray */
+  --card: 0 0% 8%; /* Dark gray card with subtle difference from background */
   --card-foreground: 0 0% 100%; /* White text */
-  --border: 0 0% 20%; /* Dark gray border */
+  --border: 0 0% 15%; /* Subtle border */
   --input: 0 0% 15%; /* Dark gray input */
-  --primary: 0 90% 40%; /* Primary red */
+  --primary: 0 80% 45%; /* Primary red - slightly softer than pure red */
   --primary-foreground: 0 0% 100%; /* White text */
   --secondary: 0 0% 12%; /* Dark gray secondary */
   --secondary-foreground: 0 0% 100%; /* White text */
-  --accent: 0 90% 40%; /* Accent red (same as primary) */
+  --accent: 0 80% 45%; /* Accent red (same as primary) */
   --accent-foreground: 0 0% 100%; /* White text */
   --destructive: 0 84.2% 60.2%; /* Bright red for destructive actions */
   --destructive-foreground: 0 0% 100%; /* White text */
-  --ring: 0 90% 40%; /* Red ring */
-  --radius: 0.5rem;
-  --textsecondary: 0 0% 70%; /* Light gray for secondary text */
-  --accentglow: 0 90% 50%; /* Brighter red for hover states */
+  --ring: 0 80% 45%; /* Red ring */
+  --radius: 0.75rem; /* More modern rounded corners */
+  --textsecondary: 0 0% 75%; /* Light gray for secondary text - improved contrast */
+  --accentglow: 0 80% 55%; /* Brighter red for hover states */
 }
 
 @layer base {

@@ -43,12 +43,12 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="relative w-10 h-10 flex items-center justify-center">
+          <div className="flex items-center space-x-2">
+            <div className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
               <span className="absolute inset-0 rounded-full bg-accent/20 animate-pulse-slow"></span>
-              <span className="absolute w-6 h-6 rounded-full bg-accent/30 blur-sm"></span>
+              <span className="absolute w-5 h-5 md:w-6 md:h-6 rounded-full bg-accent/30 blur-sm"></span>
             </div>
-            <span className="text-xl font-bold font-montserrat tracking-wider">AELORIA</span>
+            <span className="text-lg md:text-xl font-bold font-montserrat tracking-wider">ELORIA</span>
           </div>
           
           <nav className="hidden md:flex items-center">

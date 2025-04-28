@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-20 pb-16 md:pt-24 md:pb-0"
     >
       {/* Particles Background */}
       <ParticlesBackground />
@@ -30,27 +30,27 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90 z-10"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent z-10"></div>
       
-      {/* Floating elements */}
-      <div className="absolute top-1/3 left-[10%] w-8 h-8 rounded-full border border-accent/20 animate-float z-20" style={{animationDelay: '0.5s'}}></div>
-      <div className="absolute top-2/3 right-[15%] w-6 h-6 rounded-full bg-accent/10 animate-float z-20" style={{animationDelay: '1.2s'}}></div>
-      <div className="absolute bottom-1/4 left-[25%] w-10 h-10 rounded-full border border-accent/30 animate-float z-20" style={{animationDelay: '0.8s'}}></div>
+      {/* Floating elements - hide on small screens */}
+      <div className="hidden sm:block absolute top-1/3 left-[10%] w-6 h-6 md:w-8 md:h-8 rounded-full border border-accent/20 animate-float z-20" style={{animationDelay: '0.5s'}}></div>
+      <div className="hidden sm:block absolute top-2/3 right-[15%] w-5 h-5 md:w-6 md:h-6 rounded-full bg-accent/10 animate-float z-20" style={{animationDelay: '1.2s'}}></div>
+      <div className="hidden sm:block absolute bottom-1/4 left-[25%] w-8 h-8 md:w-10 md:h-10 rounded-full border border-accent/30 animate-float z-20" style={{animationDelay: '0.8s'}}></div>
       
-      <div className="container mx-auto px-6 relative z-20 flex flex-col lg:flex-row items-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-20 flex flex-col lg:flex-row items-center">
         <div className="lg:w-1/2 lg:pr-12" style={getParallaxStyle(-0.05)}>
           <div className="inline-flex mb-4 px-4 py-1 border border-accent/30 rounded-full bg-accent/5 items-center">
             <span className="w-2 h-2 rounded-full bg-accent mr-2 animate-pulse-slow"></span>
             <span className="text-sm font-medium font-montserrat text-accent tracking-wide">Advanced AI Solutions</span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold font-montserrat leading-tight mb-6 tracking-tight">
-            Redefining 
-            <span className="relative text-accent inline-block ml-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold font-montserrat leading-tight mb-6 tracking-tight">
+            <span className="block mb-1">Redefining</span>
+            <span className="relative text-accent inline-block">
               The Future
-              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
+              <svg className="absolute -bottom-1 sm:-bottom-2 left-0 w-full" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 4 Q 50 7, 100 4 T 200 4" stroke="rgba(209, 10, 48, 0.5)" fill="none" strokeWidth="2"/>
               </svg>
             </span> 
-            <br className="hidden md:block" />With Technology
+            <span className="block mt-1">With Technology</span>
           </h1>
           
           <p className="text-lg md:text-xl text-textsecondary mb-8 max-w-lg font-light">
@@ -85,10 +85,10 @@ const Hero: React.FC = () => {
           </div>
         </div>
         
-        <div className="lg:w-1/2 mt-16 lg:mt-0 flex justify-center items-center" style={getParallaxStyle(0.05)}>
-          <div className="relative w-72 h-72 lg:w-96 lg:h-96 animate-float">
-            {/* Floating image */}
-            <div className="absolute -top-20 -right-12 w-40 h-40 bg-card rounded-2xl shadow-xl overflow-hidden border border-accent/20 rotate-12 z-30">
+        <div className="lg:w-1/2 mt-12 sm:mt-16 lg:mt-0 flex justify-center items-center" style={getParallaxStyle(0.05)}>
+          <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-96 lg:h-96 animate-float">
+            {/* Floating image - hidden on extra small screens to prevent overlap */}
+            <div className="hidden xs:block absolute -top-20 -right-12 w-32 h-32 sm:w-40 sm:h-40 bg-card rounded-2xl shadow-xl overflow-hidden border border-accent/20 rotate-12 z-30">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-70"></div>
               <img 
                 src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
@@ -121,8 +121,8 @@ const Hero: React.FC = () => {
             <div className="absolute bottom-10 left-5 w-3 h-3 rounded-full bg-accent/30 animate-pulse-slow" style={{animationDelay: '1s'}}></div>
             <div className="absolute top-1/2 left-0 w-4 h-4 rounded-full bg-accent/40 animate-pulse-slow" style={{animationDelay: '2s'}}></div>
             
-            {/* Floating tech badge */}
-            <div className="absolute -left-16 bottom-8 bg-card/60 backdrop-blur-sm p-3 rounded-xl border border-accent/20 shadow-lg flex items-center z-30">
+            {/* Floating tech badge - hide on very small screens, position differently on different screens */}
+            <div className="hidden sm:flex absolute bg-card/60 backdrop-blur-sm p-3 rounded-xl border border-accent/20 shadow-lg items-center z-30 sm:-left-16 sm:bottom-8">
               <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mr-3">
                 <i className="fas fa-microchip text-accent"></i>
               </div>
@@ -131,37 +131,47 @@ const Hero: React.FC = () => {
                 <div className="text-xs text-textsecondary">Next-gen technology</div>
               </div>
             </div>
+            
+            {/* Mobile version of tech badge - shown only on xs screens */}
+            <div className="absolute xs:flex sm:hidden -bottom-12 right-4 bg-card/60 backdrop-blur-sm p-2 rounded-xl border border-accent/20 shadow-lg items-center z-30 hidden">
+              <div className="w-6 h-6 rounded-lg bg-accent/10 flex items-center justify-center mr-2">
+                <i className="fas fa-microchip text-accent text-xs"></i>
+              </div>
+              <div>
+                <div className="text-xs font-semibold">Quantum Tech</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       
-      {/* Stats or credibility indicators */}
-      <div className="absolute bottom-10 left-0 right-0 z-20">
+      {/* Stats or credibility indicators - adjust for mobile */}
+      <div className="hidden sm:block absolute bottom-10 left-0 right-0 z-20">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-accent/10 pt-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 border-t border-accent/10 pt-6">
             <div className="text-center">
-              <div className="text-2xl font-bold font-montserrat text-white flex items-center justify-center">
+              <div className="text-xl sm:text-2xl font-bold font-montserrat text-white flex items-center justify-center">
                 10<span className="text-accent text-sm">+</span>
               </div>
-              <div className="text-xs text-textsecondary uppercase tracking-wider">Years Experience</div>
+              <div className="text-[10px] sm:text-xs text-textsecondary uppercase tracking-wider">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold font-montserrat text-white flex items-center justify-center">
+              <div className="text-xl sm:text-2xl font-bold font-montserrat text-white flex items-center justify-center">
                 250<span className="text-accent text-sm">+</span>
               </div>
-              <div className="text-xs text-textsecondary uppercase tracking-wider">Projects Completed</div>
+              <div className="text-[10px] sm:text-xs text-textsecondary uppercase tracking-wider">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold font-montserrat text-white flex items-center justify-center">
+              <div className="text-xl sm:text-2xl font-bold font-montserrat text-white flex items-center justify-center">
                 50<span className="text-accent text-sm">+</span>
               </div>
-              <div className="text-xs text-textsecondary uppercase tracking-wider">Team Experts</div>
+              <div className="text-[10px] sm:text-xs text-textsecondary uppercase tracking-wider">Team Experts</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold font-montserrat text-white flex items-center justify-center">
+              <div className="text-xl sm:text-2xl font-bold font-montserrat text-white flex items-center justify-center">
                 99<span className="text-accent text-sm">%</span>
               </div>
-              <div className="text-xs text-textsecondary uppercase tracking-wider">Client Satisfaction</div>
+              <div className="text-[10px] sm:text-xs text-textsecondary uppercase tracking-wider">Client Satisfaction</div>
             </div>
           </div>
         </div>

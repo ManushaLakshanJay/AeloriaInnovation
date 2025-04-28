@@ -19,7 +19,7 @@ const ParticlesBackground: React.FC = () => {
             }
           },
           "color": {
-            "value": "#d10a30"
+            "value": "#cc0000"
           },
           "shape": {
             "type": "circle",
@@ -51,7 +51,7 @@ const ParticlesBackground: React.FC = () => {
           "line_linked": {
             "enable": true,
             "distance": 150,
-            "color": "#d10a30",
+            "color": "#cc0000",
             "opacity": 0.2,
             "width": 1
           },

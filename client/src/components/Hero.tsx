@@ -1,20 +1,21 @@
 import React from "react";
+import ParticlesBackground from "./ParticlesBackground";
 
 const Hero: React.FC = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden parallax"
-      style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')",
-        backgroundSize: "cover",
-        backgroundPosition: "center"
-      }}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
     >
-      <div className="absolute inset-0 bg-black/70 z-10"></div>
+      {/* Particles Background */}
+      <ParticlesBackground />
+      
+      {/* Red gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent z-10"></div>
       
       <div className="container mx-auto px-6 relative z-20 flex flex-col lg:flex-row items-center">
-        <div className="lg:w-1/2 lg:pr-12 animate-fadeIn">
+        <div className="lg:w-1/2 lg:pr-12">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-montserrat leading-tight mb-6">
             Redefining The Future With 
             <span className="text-accent"> Advanced AI</span> Solutions
@@ -36,7 +37,7 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-2 border-4 border-accent/30 rounded-full"></div>
                 <div className="absolute inset-0 border border-accent rounded-full animate-ping"></div>
                 <div className="w-full h-full flex items-center justify-center text-4xl font-bold">
-                  <span className="font-montserrat">A</span>
+                  <span className="font-montserrat text-white">A</span>
                 </div>
               </div>
             </div>

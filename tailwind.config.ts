@@ -44,6 +44,8 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        textsecondary: "hsl(var(--textsecondary))",
+        accentglow: "hsl(var(--accentglow))",
         chart: {
           "1": "hsl(var(--chart-1))",
           "2": "hsl(var(--chart-2))",

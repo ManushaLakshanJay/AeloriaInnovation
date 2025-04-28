@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import { useEffect } from "react";
 
 function Router() {
   return (
@@ -16,11 +17,20 @@ function Router() {
 }
 
 function App() {
+  // Force dark mode for the entire app
+  useEffect(() => {
+    // Add dark class to html element to ensure proper theme is applied
+    document.documentElement.classList.add('dark');
+    document.body.style.backgroundColor = '#000';
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Router />
+        <div className="bg-background min-h-screen text-foreground">
+          <Toaster />
+          <Router />
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );

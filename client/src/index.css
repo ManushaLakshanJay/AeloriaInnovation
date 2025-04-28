@@ -58,6 +58,11 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Ensures anchors don't hide under the fixed header */
+  }
+
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
@@ -70,6 +75,25 @@
   
   .font-poppins {
     font-family: 'Poppins', sans-serif;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent/30 rounded-full;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent/50;
   }
 }
 
@@ -101,6 +125,17 @@
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Custom classes */
 .animate-float {
   animation: float 6s ease-in-out infinite;
@@ -112,6 +147,10 @@
 
 .animate-spin-slow {
   animation: spin-slow 15s linear infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 .glow-button:hover {

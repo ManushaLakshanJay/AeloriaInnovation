@@ -43,12 +43,28 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
-              <span className="absolute inset-0 rounded-full bg-accent/20 animate-pulse-slow"></span>
-              <span className="absolute w-5 h-5 md:w-6 md:h-6 rounded-full bg-accent/30 blur-sm"></span>
+          <div className="flex items-center space-x-3">
+            <div className="relative w-9 h-9 md:w-12 md:h-12 flex items-center justify-center">
+              {/* Background glow */}
+              <span className="absolute inset-0 rounded-full bg-gradient-to-br from-accent to-accent/20 animate-pulse-slow shadow-lg shadow-accent/20"></span>
+              
+              {/* Inner glow */}
+              <span className="absolute w-6 h-6 md:w-8 md:h-8 rounded-full bg-accent/50 blur-sm"></span>
+              
+              {/* Logo letter "A" */}
+              <span className="relative text-lg md:text-xl font-bold text-white z-10">A</span>
+              
+              {/* Animated rings */}
+              <span className="absolute inset-0 rounded-full border border-white/40 opacity-75"></span>
+              <span className="absolute inset-[-2px] rounded-full border border-accent/60 animate-spin-slow opacity-60" style={{animationDuration: '15s'}}></span>
             </div>
-            <span className="text-lg md:text-xl font-bold font-montserrat tracking-wider">AELORIA</span>
+            <div>
+              <span className="text-xl md:text-2xl font-bold font-montserrat tracking-wider text-white flex items-center">
+                <span className="text-accent">AE</span>LORIA
+                <span className="w-1.5 h-1.5 rounded-full bg-accent ml-1 animate-pulse-slow"></span>
+              </span>
+              <span className="text-[10px] text-textsecondary tracking-widest uppercase hidden md:block font-light">Technologies</span>
+            </div>
           </div>
           
           <nav className="hidden md:flex items-center">

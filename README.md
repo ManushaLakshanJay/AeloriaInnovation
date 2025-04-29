@@ -19,6 +19,10 @@ Aeloria Innovation is a modern, full-stack web application built using **React**
 
 ---
 
+## Live Server
+
+https://aeloria-innovation-manushalakshan.replit.app/
+
 ## Tech Stack
 
 **Frontend:**

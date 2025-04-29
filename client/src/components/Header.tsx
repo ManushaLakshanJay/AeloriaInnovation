@@ -48,7 +48,7 @@ const Header: React.FC = () => {
               <span className="absolute inset-0 rounded-full bg-accent/20 animate-pulse-slow"></span>
               <span className="absolute w-5 h-5 md:w-6 md:h-6 rounded-full bg-accent/30 blur-sm"></span>
             </div>
-            <span className="text-lg md:text-xl font-bold font-montserrat tracking-wider">ELORIA</span>
+            <span className="text-lg md:text-xl font-bold font-montserrat tracking-wider">AELORIA</span>
           </div>
           
           <nav className="hidden md:flex items-center">

@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import { useEffect, useState } from "react";
+import CustomCursor from "./components/CustomCursor";
 
 function Router() {
   return (
@@ -66,6 +67,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="bg-background min-h-screen text-foreground">
+          <CustomCursor />
           <Toaster />
           <Router />
           <BackToTopButton />

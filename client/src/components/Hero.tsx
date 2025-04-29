@@ -7,6 +7,7 @@ const Hero: React.FC = () => {
   const [pulseSize, setPulseSize] = useState(20); // Initial size of center orb
   const [pointerPosition, setPointerPosition] = useState({ x: 0, y: 0 });
   const [showPointerEffect, setShowPointerEffect] = useState(false);
+  const [showScrollHint, setShowScrollHint] = useState(true);
   
   // Handle orb interaction with pointer position
   const handleOrbInteraction = (e: React.MouseEvent | React.TouchEvent) => {
@@ -42,12 +43,21 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollPosition(window.scrollY);
+      const currentPosition = window.scrollY;
+      setScrollPosition(currentPosition);
+      
+      // Hide scroll hint when user scrolls down (after 100px of scrolling)
+      if (currentPosition > 100 && showScrollHint) {
+        setShowScrollHint(false);
+      } else if (currentPosition <= 50 && !showScrollHint) {
+        // Show it again when back at the top
+        setShowScrollHint(true);
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [showScrollHint]);
 
   // Parallax effect based on scroll position
   const getParallaxStyle = (factor: number) => ({
@@ -232,6 +242,33 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Scroll to explore hint - conditionally shown based on scroll position */}
+      {showScrollHint && (
+        <div className="absolute bottom-5 left-0 right-0 flex justify-center items-center z-30 pointer-events-none">
+          <div className="flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity duration-500">
+            <div className="text-xs text-textsecondary/80 mb-2 font-montserrat tracking-wider uppercase" style={{animation: 'fadeInOut 2s ease-in-out infinite'}}>
+              Scroll to Explore
+            </div>
+            <div className="relative w-5 h-8 border border-accent/40 rounded-full flex justify-center mb-1 overflow-hidden">
+              {/* Animated dot */}
+              <div 
+                className="w-1.5 h-1.5 bg-accent rounded-full absolute top-1.5"
+                style={{animation: 'scrollDown 2s ease-in-out infinite'}}
+              />
+              
+              {/* Subtle glow effect */}
+              <div className="absolute -inset-1 bg-accent/5 rounded-full blur-sm" style={{animation: 'fadeInOut 3s ease-in-out infinite', animationDelay: '0.5s'}}></div>
+            </div>
+            
+            {/* Arrow indicators */}
+            <div className="flex flex-col items-center -mt-0.5">
+              <i className="fas fa-chevron-down text-[8px] text-accent/60" style={{animation: 'scrollDown 2s ease-in-out infinite', animationDelay: '0.3s'}}></i>
+              <i className="fas fa-chevron-down text-[6px] text-accent/40 -mt-1" style={{animation: 'scrollDown 2s ease-in-out infinite', animationDelay: '0.4s'}}></i>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

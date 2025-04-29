@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ParticlesBackground from "./ParticlesBackground";
+import TextReveal from "./TextReveal";
+import ParallaxMouseEffect from "./ParallaxMouseEffect";
+import PageTransition from "./PageTransition";
+import AnimatedButton from "./AnimatedButton";
+import Floating3DElement from "./Floating3DElement";
 
 const Hero: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);

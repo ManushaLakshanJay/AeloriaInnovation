@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useIntersectionObserver } from "@/lib/hooks/use-intersection-observer";
+import ourStoryImage from "../assets/our-story-team.png";
 
 // Define company statistics 
 const stats = [
@@ -115,12 +116,23 @@ const About: React.FC = () => {
           {activeTab === "story" && (
             <div className="flex flex-col lg:flex-row items-center gap-12 animate-fadeIn">
               <div className="lg:w-1/2 relative">
-                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-accent/20 to-transparent blur-xl opacity-70 -z-10"></div>
-                <img 
-                  src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                  alt="Futuristic Technology" 
-                  className="rounded-2xl shadow-2xl w-full h-auto object-cover border border-accent/10" 
-                />
+                {/* Enhanced background glow effect */}
+                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-accent/30 to-transparent blur-xl opacity-80 -z-10"></div>
+                
+                {/* Red accent border with shadow */}
+                <div className="relative p-1 rounded-2xl bg-gradient-to-br from-accent/40 to-accent/5 shadow-lg shadow-accent/10">
+                  <img 
+                    src={ourStoryImage} 
+                    alt="Aeloria Team Collaboration" 
+                    className="rounded-xl w-full h-auto object-cover" 
+                  />
+                  
+                  {/* Caption overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent rounded-b-xl px-4 pt-12 pb-3">
+                    <div className="text-xs font-medium text-accent">Team Collaboration</div>
+                    <div className="text-xs text-white/90">Aeloria's team innovating together</div>
+                  </div>
+                </div>
               </div>
               
               <div className="lg:w-1/2">

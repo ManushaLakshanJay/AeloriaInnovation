@@ -87,16 +87,6 @@ const Hero: React.FC = () => {
         
         <div className="lg:w-1/2 mt-12 sm:mt-16 lg:mt-0 flex justify-center items-center" style={getParallaxStyle(0.05)}>
           <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-96 lg:h-96 animate-float">
-            {/* Floating image - hidden on extra small screens to prevent overlap */}
-            <div className="hidden xs:block absolute -top-20 -right-12 w-32 h-32 sm:w-40 sm:h-40 bg-card rounded-2xl shadow-xl overflow-hidden border border-accent/20 rotate-12 z-30">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-70"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                alt="AI Technology" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            
             {/* Background glow effect */}
             <div className="absolute -inset-4 rounded-full bg-accent/5 blur-2xl"></div>
             
@@ -120,27 +110,6 @@ const Hero: React.FC = () => {
             <div className="absolute top-5 right-5 w-5 h-5 rounded-full bg-accent/50 animate-pulse-slow"></div>
             <div className="absolute bottom-10 left-5 w-3 h-3 rounded-full bg-accent/30 animate-pulse-slow" style={{animationDelay: '1s'}}></div>
             <div className="absolute top-1/2 left-0 w-4 h-4 rounded-full bg-accent/40 animate-pulse-slow" style={{animationDelay: '2s'}}></div>
-            
-            {/* Floating tech badge - hide on very small screens, position differently on different screens */}
-            <div className="hidden sm:flex absolute bg-card/60 backdrop-blur-sm p-3 rounded-xl border border-accent/20 shadow-lg items-center z-30 sm:-left-16 sm:bottom-8">
-              <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center mr-3">
-                <i className="fas fa-microchip text-accent"></i>
-              </div>
-              <div>
-                <div className="text-xs font-semibold">Quantum Processing</div>
-                <div className="text-xs text-textsecondary">Next-gen technology</div>
-              </div>
-            </div>
-            
-            {/* Mobile version of tech badge - shown only on xs screens */}
-            <div className="absolute xs:flex sm:hidden -bottom-12 right-4 bg-card/60 backdrop-blur-sm p-2 rounded-xl border border-accent/20 shadow-lg items-center z-30 hidden">
-              <div className="w-6 h-6 rounded-lg bg-accent/10 flex items-center justify-center mr-2">
-                <i className="fas fa-microchip text-accent text-xs"></i>
-              </div>
-              <div>
-                <div className="text-xs font-semibold">Quantum Tech</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

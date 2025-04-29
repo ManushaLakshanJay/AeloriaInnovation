@@ -5,18 +5,37 @@ const Hero: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isOrbActive, setIsOrbActive] = useState(false);
   const [pulseSize, setPulseSize] = useState(20); // Initial size of center orb
-
-  // Handle orb interaction
-  const handleOrbInteraction = () => {
+  const [pointerPosition, setPointerPosition] = useState({ x: 0, y: 0 });
+  const [showPointerEffect, setShowPointerEffect] = useState(false);
+  
+  // Handle orb interaction with pointer position
+  const handleOrbInteraction = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isOrbActive) {
       setIsOrbActive(true);
       // Pulse the orb size
       setPulseSize(28); // Increase size
       
+      // Get pointer position relative to the target
+      const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      
+      // Calculate relative position
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+      
+      // Set position for the effect
+      setPointerPosition({ x, y });
+      setShowPointerEffect(true);
+      
       // Reset after animation completes
       setTimeout(() => {
         setIsOrbActive(false);
         setPulseSize(20); // Return to original size
+        // Hide the pointer effect with a small delay
+        setTimeout(() => {
+          setShowPointerEffect(false);
+        }, 300);
       }, 800);
     }
   };
@@ -111,6 +130,43 @@ const Hero: React.FC = () => {
             aria-label="Interactive Orb"
             tabIndex={0}
           >
+            {/* Interactive pointer effect - appears at click/touch position */}
+            {showPointerEffect && (
+              <div 
+                className="absolute pointer-events-none z-50"
+                style={{
+                  left: `${pointerPosition.x}px`,
+                  top: `${pointerPosition.y}px`,
+                  transform: 'translate(-50%, -50%)'
+                }}
+              >
+                {/* Ripple effect */}
+                <div className="w-16 h-16 rounded-full border-2 border-accent/40 absolute pointer-ripple" style={{top: '-8px', left: '-8px'}}></div>
+                
+                {/* Glow effect */}
+                <div className="w-12 h-12 rounded-full bg-accent/10 absolute" style={{
+                  top: '-6px', 
+                  left: '-6px',
+                  animation: 'pointer-fade 1s ease-out forwards'
+                }}></div>
+                
+                {/* Core of the pointer effect */}
+                <div className="w-6 h-6 rounded-full bg-accent/40 absolute" style={{
+                  top: '-3px', 
+                  left: '-3px',
+                  animation: 'pointer-fade 0.8s ease-out forwards',
+                  animationDelay: '0.1s'
+                }}></div>
+                
+                {/* Bright center */}
+                <div className="w-3 h-3 rounded-full bg-accent/80 absolute" style={{
+                  top: '-1.5px', 
+                  left: '-1.5px',
+                  animation: 'pointer-fade 0.6s ease-out forwards',
+                  animationDelay: '0.2s'
+                }}></div>
+              </div>
+            )}
             {/* Background glow effect */}
             <div className={`absolute -inset-4 rounded-full bg-accent/5 blur-2xl transition-opacity duration-300 ${isOrbActive ? 'opacity-100' : 'opacity-60'}`}></div>
             

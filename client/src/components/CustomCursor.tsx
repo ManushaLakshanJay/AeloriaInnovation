@@ -17,15 +17,15 @@ const CustomCursor: React.FC = () => {
   // Generate trail points when mouse moves
   useEffect(() => {
     if (position.x > 0 && position.y > 0) {
-      // Add a new trail point
+      // Add a new trail point with slightly lower opacity
       const newPoint = { 
         x: position.x, 
         y: position.y, 
-        opacity: 0.8 
+        opacity: 0.6 // Reduced opacity for more subtle effect
       };
       
-      // Only keep the last 5 trail points
-      const updatedTrail = [...trail, newPoint].slice(-5);
+      // Only keep the last 3 trail points - more subtle
+      const updatedTrail = [...trail, newPoint].slice(-3);
       setTrail(updatedTrail);
       
       // Fade out trail points over time
@@ -107,15 +107,17 @@ const CustomCursor: React.FC = () => {
       {trail.map((point, index) => (
         <div 
           key={index}
-          className="fixed pointer-events-none z-40 rounded-full bg-accent"
+          className="fixed pointer-events-none z-40 rounded-full"
           style={{
             left: `${point.x}px`,
             top: `${point.y}px`,
-            width: '4px',
-            height: '4px',
+            width: '3px',
+            height: '3px',
+            backgroundColor: `rgba(209, 10, 48, ${point.opacity * 0.5})`,
             opacity: point.opacity * 0.7,
             transform: 'translate(-50%, -50%)',
-            transition: 'opacity 0.2s ease-out'
+            transition: 'opacity 0.2s ease-out',
+            boxShadow: `0 0 ${5 * point.opacity}px rgba(209, 10, 48, ${point.opacity * 0.8})`
           }}
         />
       ))}

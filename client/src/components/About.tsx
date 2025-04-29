@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import { useIntersectionObserver } from "@/lib/hooks/use-intersection-observer";
-import ourStoryImage from "../assets/our-story-team.png";
-import teamCollaboration from "../assets/team-collaboration.png";
-import aiInnovation from "../assets/ai-innovation.png";
-import techFuture from "../assets/tech-future.png";
 
 // Define company statistics 
 const stats = [
@@ -119,23 +115,12 @@ const About: React.FC = () => {
           {activeTab === "story" && (
             <div className="flex flex-col lg:flex-row items-center gap-12 animate-fadeIn">
               <div className="lg:w-1/2 relative">
-                {/* Enhanced background glow effect */}
-                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-accent/30 to-transparent blur-xl opacity-80 -z-10"></div>
-                
-                {/* Red accent border with shadow */}
-                <div className="relative p-1 rounded-2xl bg-gradient-to-br from-accent/40 to-accent/5 shadow-lg shadow-accent/10">
-                  <img 
-                    src={ourStoryImage} 
-                    alt="Aeloria Team Collaboration" 
-                    className="rounded-xl w-full h-auto object-cover" 
-                  />
-                  
-                  {/* Caption overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent rounded-b-xl px-4 pt-12 pb-3">
-                    <div className="text-xs font-medium text-accent">Team Collaboration</div>
-                    <div className="text-xs text-white/90">Aeloria's team innovating together</div>
-                  </div>
-                </div>
+                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-accent/20 to-transparent blur-xl opacity-70 -z-10"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                  alt="Futuristic Technology" 
+                  className="rounded-2xl shadow-2xl w-full h-auto object-cover border border-accent/10" 
+                />
               </div>
               
               <div className="lg:w-1/2">
@@ -238,94 +223,6 @@ const About: React.FC = () => {
               </div>
             </div>
           )}
-        </div>
-        
-        {/* New Image Gallery Section - Added as requested */}
-        <div className="mt-20">
-          <div className="text-center mb-12">
-            <div className="inline-block mb-3 px-4 py-1 border border-accent/30 rounded-full bg-accent/5">
-              <span className="text-sm font-medium font-montserrat text-accent tracking-wide">Our Work</span>
-            </div>
-            <h2 className="text-2xl md:text-4xl font-bold font-montserrat mb-4 tracking-tight">The <span className="text-accent">Future</span> We're Building</h2>
-            <p className="text-textsecondary max-w-2xl mx-auto opacity-90">Explore our innovative technologies and solutions that are shaping tomorrow's digital landscape.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Image 1 */}
-            <div className="group relative overflow-hidden rounded-2xl">
-              <div className="absolute -inset-1 bg-gradient-to-tl from-accent/30 to-transparent blur-xl opacity-60 -z-10 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative p-1 rounded-2xl bg-gradient-to-br from-accent/40 to-accent/5 shadow-lg shadow-accent/10 h-full">
-                <div className="bg-black/30 backdrop-blur-sm rounded-xl p-0.5 h-full">
-                  <div className="relative h-full overflow-hidden rounded-lg">
-                    <img 
-                      src={teamCollaboration} 
-                      alt="Team Collaboration" 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-70"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-xl font-bold font-montserrat text-white mb-2">Team Collaboration</h3>
-                      <p className="text-textsecondary text-sm mb-4">Our collaborative approach brings together diverse expertise to solve complex challenges.</p>
-                      <div className="flex items-center space-x-2 text-xs font-medium">
-                        <span className="px-2 py-1 rounded-full bg-accent/20 text-accent">Innovation</span>
-                        <span className="px-2 py-1 rounded-full bg-accent/20 text-accent">Teamwork</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Image 2 */}
-            <div className="group relative overflow-hidden rounded-2xl">
-              <div className="absolute -inset-1 bg-gradient-to-tr from-accent/30 to-transparent blur-xl opacity-60 -z-10 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative p-1 rounded-2xl bg-gradient-to-bl from-accent/40 to-accent/5 shadow-lg shadow-accent/10 h-full">
-                <div className="bg-black/30 backdrop-blur-sm rounded-xl p-0.5 h-full">
-                  <div className="relative h-full overflow-hidden rounded-lg">
-                    <img 
-                      src={aiInnovation} 
-                      alt="AI Innovation" 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-70"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-xl font-bold font-montserrat text-white mb-2">AI Innovation</h3>
-                      <p className="text-textsecondary text-sm mb-4">Pioneering artificial intelligence solutions that transform industries and empower businesses.</p>
-                      <div className="flex items-center space-x-2 text-xs font-medium">
-                        <span className="px-2 py-1 rounded-full bg-accent/20 text-accent">AI</span>
-                        <span className="px-2 py-1 rounded-full bg-accent/20 text-accent">Machine Learning</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Image 3 */}
-            <div className="group relative overflow-hidden rounded-2xl">
-              <div className="absolute -inset-1 bg-gradient-to-br from-accent/30 to-transparent blur-xl opacity-60 -z-10 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative p-1 rounded-2xl bg-gradient-to-tl from-accent/40 to-accent/5 shadow-lg shadow-accent/10 h-full">
-                <div className="bg-black/30 backdrop-blur-sm rounded-xl p-0.5 h-full">
-                  <div className="relative h-full overflow-hidden rounded-lg">
-                    <img 
-                      src={techFuture} 
-                      alt="Future Technology" 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-70"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-xl font-bold font-montserrat text-white mb-2">Future Technology</h3>
-                      <p className="text-textsecondary text-sm mb-4">Building the cutting-edge technologies that will shape our digital tomorrow.</p>
-                      <div className="flex items-center space-x-2 text-xs font-medium">
-                        <span className="px-2 py-1 rounded-full bg-accent/20 text-accent">Innovation</span>
-                        <span className="px-2 py-1 rounded-full bg-accent/20 text-accent">Future Tech</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

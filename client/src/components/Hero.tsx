@@ -3,6 +3,23 @@ import ParticlesBackground from "./ParticlesBackground";
 
 const Hero: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isOrbActive, setIsOrbActive] = useState(false);
+  const [pulseSize, setPulseSize] = useState(20); // Initial size of center orb
+
+  // Handle orb interaction
+  const handleOrbInteraction = () => {
+    if (!isOrbActive) {
+      setIsOrbActive(true);
+      // Pulse the orb size
+      setPulseSize(28); // Increase size
+      
+      // Reset after animation completes
+      setTimeout(() => {
+        setIsOrbActive(false);
+        setPulseSize(20); // Return to original size
+      }, 800);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,30 +103,44 @@ const Hero: React.FC = () => {
         </div>
         
         <div className="lg:w-1/2 mt-12 sm:mt-16 lg:mt-0 flex justify-center items-center" style={getParallaxStyle(0.05)}>
-          <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-96 lg:h-96 animate-float">
+          <div 
+            className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-96 lg:h-96 animate-float cursor-pointer"
+            onClick={handleOrbInteraction}
+            onTouchStart={handleOrbInteraction}
+            role="button"
+            aria-label="Interactive Orb"
+            tabIndex={0}
+          >
             {/* Background glow effect */}
-            <div className="absolute -inset-4 rounded-full bg-accent/5 blur-2xl"></div>
+            <div className={`absolute -inset-4 rounded-full bg-accent/5 blur-2xl transition-opacity duration-300 ${isOrbActive ? 'opacity-100' : 'opacity-60'}`}></div>
             
             {/* Main orb */}
-            <div className="absolute inset-0 rounded-full orb animate-spin-slow"></div>
+            <div className={`absolute inset-0 rounded-full orb animate-spin-slow ${isOrbActive ? 'opacity-100 orb-pulse' : 'opacity-80'}`}></div>
             
             {/* Orbit rings */}
-            <div className="absolute inset-0 rounded-full border border-accent/20 animate-spin-slow" style={{animationDuration: '25s'}}></div>
-            <div className="absolute inset-4 rounded-full border border-accent/15 animate-spin-slow" style={{animationDuration: '15s', animationDirection: 'reverse'}}></div>
+            <div className={`absolute inset-0 rounded-full border border-accent/20 animate-spin-slow transition-transform duration-500 ${isOrbActive ? 'scale-110' : 'scale-100'}`} style={{animationDuration: '25s'}}></div>
+            <div className={`absolute inset-4 rounded-full border border-accent/15 animate-spin-slow transition-transform duration-500 ${isOrbActive ? 'scale-105' : 'scale-100'}`} style={{animationDuration: '15s', animationDirection: 'reverse'}}></div>
             
             {/* Center element */}
             <div className="absolute w-full h-full flex items-center justify-center">
-              <div className="w-36 h-36 md:w-44 md:h-44 relative bg-background/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-accent/30 shadow-lg shadow-accent/10">
-                <div className="absolute inset-2 border-2 border-accent/20 rounded-full"></div>
-                <div className="absolute inset-0 border border-accent/40 rounded-full animate-ping opacity-30"></div>
-                <div className="w-20 h-20 rounded-full bg-accent/20 animate-pulse-slow"></div>
+              <div className={`w-36 h-36 md:w-44 md:h-44 relative bg-background/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-accent/30 shadow-lg shadow-accent/10 transition-all duration-300 ${isOrbActive ? 'border-accent/60 shadow-accent/30' : ''}`}>
+                <div className={`absolute inset-2 border-2 border-accent/20 rounded-full transition-all duration-300 ${isOrbActive ? 'border-accent/40' : ''}`}></div>
+                <div className={`absolute inset-0 border border-accent/40 rounded-full animate-ping opacity-30 ${isOrbActive ? 'opacity-60' : ''}`}></div>
+                <div 
+                  className="rounded-full bg-accent/20 animate-pulse-slow transition-all duration-300" 
+                  style={{ 
+                    width: isOrbActive ? `${pulseSize + 8}px` : `${pulseSize}px`, 
+                    height: isOrbActive ? `${pulseSize + 8}px` : `${pulseSize}px`,
+                    boxShadow: isOrbActive ? '0 0 20px 5px rgba(209, 10, 48, 0.3)' : 'none'
+                  }}
+                ></div>
               </div>
             </div>
             
-            {/* Floating particles */}
-            <div className="absolute top-5 right-5 w-5 h-5 rounded-full bg-accent/50 animate-pulse-slow"></div>
-            <div className="absolute bottom-10 left-5 w-3 h-3 rounded-full bg-accent/30 animate-pulse-slow" style={{animationDelay: '1s'}}></div>
-            <div className="absolute top-1/2 left-0 w-4 h-4 rounded-full bg-accent/40 animate-pulse-slow" style={{animationDelay: '2s'}}></div>
+            {/* Floating particles - particles grow and glow when activated */}
+            <div className={`absolute top-5 right-5 w-5 h-5 rounded-full bg-accent/50 animate-pulse-slow transition-all duration-300 ${isOrbActive ? 'w-6 h-6 bg-accent/70' : ''}`}></div>
+            <div className={`absolute bottom-10 left-5 w-3 h-3 rounded-full bg-accent/30 animate-pulse-slow transition-all duration-300 ${isOrbActive ? 'w-4 h-4 bg-accent/50' : ''}`} style={{animationDelay: '1s'}}></div>
+            <div className={`absolute top-1/2 left-0 w-4 h-4 rounded-full bg-accent/40 animate-pulse-slow transition-all duration-300 ${isOrbActive ? 'w-5 h-5 bg-accent/60' : ''}`} style={{animationDelay: '2s'}}></div>
           </div>
         </div>
       </div>

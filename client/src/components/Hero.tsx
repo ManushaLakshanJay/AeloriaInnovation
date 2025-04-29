@@ -4,7 +4,6 @@ import TextReveal from "./TextReveal";
 import ParallaxMouseEffect from "./ParallaxMouseEffect";
 import PageTransition from "./PageTransition";
 import AnimatedButton from "./AnimatedButton";
-import Floating3DElement from "./Floating3DElement";
 
 const Hero: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -88,41 +87,75 @@ const Hero: React.FC = () => {
       
       <div className="container mx-auto px-4 sm:px-6 relative z-20 flex flex-col lg:flex-row items-center">
         <div className="lg:w-1/2 lg:pr-12" style={getParallaxStyle(-0.05)}>
-          <div className="inline-flex mb-4 px-4 py-1 border border-accent/30 rounded-full bg-accent/5 items-center">
-            <span className="w-2 h-2 rounded-full bg-accent mr-2 animate-pulse-slow"></span>
-            <span className="text-sm font-medium font-montserrat text-accent tracking-wide">Advanced AI Solutions</span>
-          </div>
+          <PageTransition delay={300}>
+            <div className="inline-flex mb-4 px-4 py-1 border border-accent/30 rounded-full bg-accent/5 items-center animate-glow-pulse">
+              <span className="w-2 h-2 rounded-full bg-accent mr-2 animate-pulse-slow"></span>
+              <span className="text-sm font-medium font-montserrat text-accent tracking-wide">Advanced AI Solutions</span>
+            </div>
+          </PageTransition>
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold font-montserrat leading-tight mb-6 tracking-tight">
-            <span className="block mb-1">Redefining</span>
-            <span className="relative text-accent inline-block">
-              The Future
+            <TextReveal 
+              text="Redefining" 
+              as="span" 
+              speed={40}
+              delay={500}
+              className="block mb-1 overflow-hidden"
+              once={true}
+            />
+            <TextReveal 
+              text="The Future" 
+              as="span" 
+              speed={40}
+              delay={800}
+              className="relative text-accent inline-block overflow-hidden"
+              once={true}
+              highlightWords={["Future"]}
+              highlightColor="text-accent relative"
+            >
               <svg className="absolute -bottom-1 sm:-bottom-2 left-0 w-full" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 4 Q 50 7, 100 4 T 200 4" stroke="rgba(209, 10, 48, 0.5)" fill="none" strokeWidth="2"/>
               </svg>
-            </span> 
-            <span className="block mt-1">With Technology</span>
+            </TextReveal>
+            <TextReveal 
+              text="With Technology" 
+              as="span" 
+              speed={40}
+              delay={1100}
+              className="block mt-1 overflow-hidden"
+              once={true}
+            />
           </h1>
           
-          <p className="text-lg md:text-xl text-textsecondary mb-8 max-w-lg font-light">
-            We craft premium digital experiences that transform businesses through cutting-edge technology and elegant design.
-          </p>
+          <PageTransition from={{ opacity: 0, y: 20 }} delay={1400}>
+            <p className="text-lg md:text-xl text-textsecondary mb-8 max-w-lg font-light">
+              We craft premium digital experiences that transform businesses through cutting-edge technology and elegant design.
+            </p>
+          </PageTransition>
           
-          <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <a 
-              href="#contact"
-              className="group glow-button bg-accent hover:bg-accentglow text-white font-montserrat font-medium py-3 px-8 rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg shadow-accent/10"
-            >
-              <span className="mr-2">Start Your Project</span>
-              <i className="fas fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
-            </a>
-            
-            <button className="group border border-accent/20 bg-background hover:bg-accent/5 text-white font-montserrat font-medium py-3 px-8 rounded-xl transition-all duration-300 flex items-center justify-center overflow-hidden relative">
-              <span className="absolute inset-0 bg-accent/10 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500"></span>
-              <i className="fas fa-play-circle mr-2 text-accent relative z-10"></i>
-              <span className="relative z-10">Watch Showreel</span>
-            </button>
-          </div>
+          <PageTransition from={{ opacity: 0, y: 20 }} delay={1600}>
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <AnimatedButton 
+                href="#contact"
+                variant="primary"
+                size="md"
+                icon={<i className="fas fa-arrow-right"></i>}
+                iconPosition="right"
+                className="shadow-lg shadow-accent/10"
+              >
+                Start Your Project
+              </AnimatedButton>
+              
+              <AnimatedButton 
+                variant="outline"
+                size="md"
+                icon={<i className="fas fa-play-circle"></i>}
+                iconPosition="left"
+              >
+                Watch Showreel
+              </AnimatedButton>
+            </div>
+          </PageTransition>
           
           {/* Featured clients logos */}
           <div className="hidden md:block">

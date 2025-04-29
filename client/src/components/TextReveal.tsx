@@ -92,11 +92,9 @@ const TextReveal: React.FC<TextRevealProps> = ({
           highlight => word.toLowerCase().includes(highlight.toLowerCase())
         );
         return (
-          <React.Fragment key={index}>
-            <span className={shouldHighlight ? highlightColor : ''}>
-              {index < textArray.length - 1 ? `${word} ` : word}
-            </span>
-          </React.Fragment>
+          <span key={index} className={shouldHighlight ? highlightColor : ''}>
+            {index < textArray.length - 1 ? `${word} ` : word}
+          </span>
         );
       });
     }
